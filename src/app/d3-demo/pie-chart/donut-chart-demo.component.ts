@@ -37,6 +37,9 @@ export class AppDonutChartDemoComponent implements OnInit {
     x: (d) => d.name,
     y: (d) => d.value,
     drawColor: (d, i) => d.name,
+    legend: {
+      position: 'right',
+    },
     pie: {
       donut: 0.66,
       startAngle: Math.PI * 0.5,

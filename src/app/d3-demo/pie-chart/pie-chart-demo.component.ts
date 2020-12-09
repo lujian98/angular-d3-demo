@@ -36,6 +36,7 @@ export class AppPieChartDemoComponent implements OnInit {
     drawColor: (d, i) => d.key,
     legend: {
       position: 'right',
+      align: 'center'
     },
     pie: {
       startAngle: -Math.PI * 0.5,

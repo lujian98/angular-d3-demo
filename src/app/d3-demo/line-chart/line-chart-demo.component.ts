@@ -34,6 +34,14 @@ export class AppLineChartDemoComponent implements OnInit {
     x0: (d) => d.key,
     y0: (d) => d.values,
     drawColor: (d, i) => d.key,
+    xAxis: {
+      axisLabel: 'Time (ms)',
+      axisLabelDistance: 0
+    },
+    yAxis: {
+      axisLabel: 'Voltage (v)',
+      axisLabelDistance: 0
+    },
     zoom: {
       enabled: true,
       horizontalOff: false,
@@ -48,6 +56,14 @@ export class AppLineChartDemoComponent implements OnInit {
     x0: (d) => d.key,
     y0: (d) => d.values,
     drawColor: (d, i) => d.key,
+    xAxis: {
+      axisLabel: 'Time (ms)',
+      axisLabelDistance: 0
+    },
+    yAxis: {
+      axisLabel: 'Voltage (v)',
+      axisLabelDistance: 0
+    },
     zoom: {
       enabled: true,
       horizontalOff: false,
@@ -64,6 +80,14 @@ export class AppLineChartDemoComponent implements OnInit {
     x0: (d) => d.key,
     y0: (d) => d.values,
     drawColor: (d, i) => d.key,
+    xAxis: {
+      axisLabel: 'Time (ms)',
+      axisLabelDistance: 0
+    },
+    yAxis: {
+      axisLabel: 'Voltage (v)',
+      axisLabelDistance: 0
+    },
     zoom: {
       enabled: true,
       horizontalOff: true,
@@ -80,6 +104,14 @@ export class AppLineChartDemoComponent implements OnInit {
     x0: (d) => d.key,
     y0: (d) => d.values,
     drawColor: (d, i) => d.key,
+    xAxis: {
+      axisLabel: 'Time (ms)',
+      axisLabelDistance: 0
+    },
+    yAxis: {
+      axisLabel: 'Voltage (v)',
+      axisLabelDistance: 0
+    },
     zoom: {
       enabled: true,
       horizontalOff: false,

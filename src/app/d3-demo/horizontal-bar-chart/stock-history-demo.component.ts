@@ -19,7 +19,7 @@ import { STOCK_PRICE } from '../shared/stock_price';
 export class AppStockHistoryDemoComponent<T> implements OnInit {
   options: IccD3Options = {
     chartType: 'horizontalBarChart',
-    margin: { top: 10, right: 60, bottom: 20, left: 80 },
+    margin: { right: 60, left: 80 },
     xScaleType: 'linear',
     yScaleType: 'band',
     x0: (d) => d.key,

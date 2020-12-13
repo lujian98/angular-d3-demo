@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { IccD3Options } from 'icc-d3';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
+import { IccD3Options, IccUtils } from 'icc-d3';
 
 @Component({
   selector: 'app-pie-chart-demo',
@@ -16,21 +16,19 @@ export class AppPieChartDemoComponent implements OnInit {
   options: IccD3Options = {
     chartType: 'pieChart',
     xScaleType: 'band',
+    axisEnabled: true,
     x: (d) => d.key,
     y: (d) => d.y,
     drawColor: (d, i) => d.key,
-    zoom: {
-      enabled: false,
-      horizontalOff: false,
-      horizontalBrushShow: true,
-      verticalOff: false,
-      verticalBrushShow: true
+    legend: {
+      position: 'top',
     }
   };
 
   options2: IccD3Options = {
     chartType: 'pieChart',
     xScaleType: 'band',
+    axisEnabled: true,
     x: (d) => d.key,
     y: (d) => d.y,
     drawColor: (d, i) => d.key,
@@ -39,21 +37,14 @@ export class AppPieChartDemoComponent implements OnInit {
       align: 'center'
     },
     pie: {
-      startAngle: -Math.PI * 0.5,
-      endAngle: Math.PI * 0.5
-    },
-    zoom: {
-      enabled: false,
-      horizontalOff: false,
-      horizontalBrushShow: true,
-      verticalOff: false,
-      verticalBrushShow: true
+      startAngle: Math.PI * -1 / 2,
+      endAngle: Math.PI * 1 / 2,
     }
   };
 
-  data = [{
+  data0 = [{
     key: 'One',
-    y: 5
+    y: 1
   },
   {
     key: 'Two',
@@ -61,55 +52,59 @@ export class AppPieChartDemoComponent implements OnInit {
   },
   {
     key: 'Three',
-    y: 9
-  },
-  {
-    key: 'Four',
-    y: 7
-  },
-  {
-    key: 'Five',
-    y: 4
-  },
-  {
-    key: 'Six',
     y: 3
   },
   {
+    key: 'Four',
+    y: 4
+  },
+
+  {
+    key: 'Five',
+    y: 5
+  },
+  {
+    key: 'Six',
+    y: 6
+  },
+  {
     key: 'Seven',
-    y: .5
+    y: 7
   }];
 
+  data: any[];
   data2: any[];
 
+  constructor(
+    protected cd: ChangeDetectorRef,
+  ) { }
+
   ngOnInit(): void {
+    this.data = [{
+      key: 'Pie Chart',
+      values: IccUtils.clone(this.data0),
+    }];
     this.data2 = [{
       key: 'Pie Chart',
-      values: this.data,
+      values: IccUtils.clone(this.data0),
     }];
+
+    const ndata = this.data0;
+    setInterval(() => {
+      ndata.forEach((d) => {
+        d.y = 1 + Math.floor(Math.random() * 10);
+      });
+      this.data = [{
+        key: 'Pie Chart',
+        values: IccUtils.clone(ndata),
+      }];
+      this.data2 = [{
+        key: 'Pie Chart',
+        values: IccUtils.clone(ndata),
+      }];
+      // this.cd.detectChanges();
+    }, 10000);
   }
 }
 
-/*
-      const idata: any = [
-      { name: '<5', value: 19912018 },
-      { name: '5-9', value: 20501982 },
-      { name: '10-14', value: 20679786 },
-      { name: '15-19', value: 21354481 },
-      { name: '20-24', value: 22604232 },
-      { name: '25-29', value: 21698010 },
-      { name: '30-34', value: 21183639 },
-      { name: '35-39', value: 19855782 },
-      { name: '40-44', value: 20796128 },
-      { name: '45-49', value: 21370368 },
-      { name: '50-54', value: 22525490 },
-      { name: '55-59', value: 21001947 },
-      { name: '60-64', value: 18415681 },
-      { name: '65-69', value: 14547446 },
-      { name: '70-74', value: 10587721 },
-      { name: '75-79', value: 7730129 },
-      { name: '80-84', value: 5811429 },
-      { name: '≥85', value: 5938752 }
-    ];
-    */
 

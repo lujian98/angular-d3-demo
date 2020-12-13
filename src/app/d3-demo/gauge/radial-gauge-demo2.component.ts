@@ -114,8 +114,8 @@ export class AppRadialGaugeDemo2Component implements OnInit {
     y: (d) => d.max,
     radialGauge: {
       majorGraduations: 6,
-      startAngle: Math.PI * 0,
-      endAngle: Math.PI * 1 / 1,
+      startAngle: Math.PI * 1 / 2,
+      endAngle: Math.PI * 3 / 2,
       centerOffsetY: 0,
       valueUnit: 'kW',
       range: [
@@ -155,13 +155,12 @@ export class AppRadialGaugeDemo2Component implements OnInit {
 
   options4: IccD3Options = {
     chartType: 'radialGauge',
-    y0: (d) => d.value,
     x: (d) => d.min,
     y: (d) => d.max,
     radialGauge: {
       majorGraduations: 6,
-      startAngle: - Math.PI * 1,
-      endAngle: Math.PI * 0 / 1,
+      startAngle: Math.PI * 0,
+      endAngle: Math.PI * 1 / 1,
       centerOffsetY: 0,
       valueUnit: 'kW',
       range: [
@@ -195,26 +194,19 @@ export class AppRadialGaugeDemo2Component implements OnInit {
           max: 6.0,
           color: 'red'
         }
-      ]
-    }
+      ],
+    },
+    y0: (d) => d,
+    // y0: (d) => d.value,
   };
 
-  data: any[];
-  data2: any[];
-  data3: any[];
-  data4: any[];
+  data = [{ value: 4.3, }];
+  data2 = [{ value: 1.2, }];
+  data3 = [{ value: 2.72 }]
+  data4 = [3.4];
   ngOnInit(): void {
-    this.data = [{
-      value: 4.3,
-    }];
-    this.data2 = [{
-      value: 2.0,
-    }];
-    this.data3 = [{
-      value: 4.52,
-    }];
-    this.data4 = [{
-      value: 3.12,
-    }];
+    // this.data = [{ value: 4.3, }];
+    // this.data2 = [{ value: 2.0, }];
+    // this.data3 =[{ value: 4.52 }];
   }
 }

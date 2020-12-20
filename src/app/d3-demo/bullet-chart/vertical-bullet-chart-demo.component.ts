@@ -3,57 +3,65 @@ import * as d3TimeFormat from 'd3-time-format';
 import { IccD3Options, IccD3BulletChartData } from 'icc-d3';
 
 @Component({
-  selector: 'd3-bullet-chart-demo',
+  selector: 'd3-vertical-bullet-chart-demo',
+  styles: [':host { height: 100%; display: flex; flex-direction: row;'],
   template: `
-    <icc-d3 [options]="options" [data]="data" style="height: 60px"></icc-d3>
-    <icc-d3 [options]="options2" [data]="data2" style="height: 60px"></icc-d3>
-    <icc-d3 [options]="options3" [data]="data3" style="height: 90px"></icc-d3>
+  <div style="height: 100%; display: flex; flex-direction: column;">
+    <icc-d3 [options]="options" [data]="data" style="width: 90px"></icc-d3>
+  </div>
+  <div style="height: 100%; display: flex; flex-direction: column;">
+    <icc-d3 [options]="options2" [data]="data2" style="width: 140px"></icc-d3>
+  </div>
+  <div style="height: 100%; display: flex; flex-direction: column;">
+    <icc-d3 [options]="options3" [data]="data3" style="width: 140px"></icc-d3>
+  </div>
   `,
 })
-export class AppBulletChartDemoComponent implements OnInit {
+
+export class AppVerticalBulletChartDemoComponent implements OnInit {
   options: IccD3Options = {
     chartType: 'bulletChart',
-    x: (d) => d.x,
-    margin: { left: 100 },
-    yAxis: {
+    bullet: {
+      type: 'vertical',
+    },
+    y: (d) => d.x,
+    xAxis: {
       axisLabel: 'Power (kw)',
-      // textAnchor: 'end',
-      axisLabelDistance: -40,
-      rotate: 0
+      textAnchor: 'end',
+      axisLabelDistance: 20,
     },
   };
 
   options2: IccD3Options = {
     chartType: 'bulletChart',
-    x: (d) => d.x,
-    margin: { left: 120 },
     bullet: {
+      type: 'vertical',
       markerLineWidth: 4
+    },
+    margin: { left: 90 },
+    y: (d) => d.x,
+    xAxis: {
+      axisLabel: 'Temperature (F)',
+      textAnchor: 'end',
+      axisLabelDistance: 20,
     },
     yAxis: {
       axisLabel: 'Temperature (F)',
-      textAnchor: 'end',
-      axisLabelDistance: -10,
-      rotate: 0
     },
   };
 
   options3: IccD3Options = {
     chartType: 'bulletChart',
     // x: (d) => d.value,
-    margin: { left: 120, bottom: 50 },
     bullet: {
+      type: 'vertical',
       markerLineWidth: 8
     },
-    yAxis: {
-      axisLabel: 'Temperature (F)',
-      textAnchor: 'end',
-      axisLabelDistance: -10,
-      rotate: 0
-    },
-
+    margin: { left: 90 },
     xAxis: {
       axisLabel: 'Temperature (F)',
+      textAnchor: 'end',
+      axisLabelDistance: 20,
     },
   };
 

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import * as d3Format from 'd3-format';
 import { IccD3Options } from 'icc-d3';
 
 @Component({
@@ -21,8 +22,8 @@ import { IccD3Options } from 'icc-d3';
     <icc-d3 [options]="options2" [data]="data"></icc-d3>
   </div>
   <div style="height: 100%; display: flex; margin-top: 20px;">
-    <icc-d3 [options]="options1" [data]="data"></icc-d3>
-    <icc-d3 [options]="options1" [data]="data"></icc-d3>
+    <icc-d3 [options]="options3" [data]="data"></icc-d3>
+    <icc-d3 [options]="options4" [data]="data"></icc-d3>
   </div>
   */
 export class AppLineChartDemoComponent implements OnInit {
@@ -36,11 +37,11 @@ export class AppLineChartDemoComponent implements OnInit {
     drawColor: (d, i) => d.key,
     xAxis: {
       axisLabel: 'Time (ms)',
-      axisLabelDistance: 0
+      // rotate: -90
     },
     yAxis: {
       axisLabel: 'Voltage (v)',
-      axisLabelDistance: 0
+      rotate: -90
     },
     zoom: {
       enabled: true,
@@ -56,13 +57,14 @@ export class AppLineChartDemoComponent implements OnInit {
     x0: (d) => d.key,
     y0: (d) => d.values,
     drawColor: (d, i) => d.key,
+    margin: { left: 80 },
     xAxis: {
       axisLabel: 'Time (ms)',
-      axisLabelDistance: 0
+      textAnchor: 'start',
     },
     yAxis: {
       axisLabel: 'Voltage (v)',
-      axisLabelDistance: 0
+      textAnchor: 'start',
     },
     zoom: {
       enabled: true,
@@ -82,11 +84,13 @@ export class AppLineChartDemoComponent implements OnInit {
     drawColor: (d, i) => d.key,
     xAxis: {
       axisLabel: 'Time (ms)',
-      axisLabelDistance: 0
+      textAnchor: 'end',
     },
     yAxis: {
       axisLabel: 'Voltage (v)',
-      axisLabelDistance: 0
+      textAnchor: 'end',
+      rotate: -90,
+      axisLabelDistance: -40,
     },
     zoom: {
       enabled: true,
@@ -106,11 +110,9 @@ export class AppLineChartDemoComponent implements OnInit {
     drawColor: (d, i) => d.key,
     xAxis: {
       axisLabel: 'Time (ms)',
-      axisLabelDistance: 0
     },
     yAxis: {
       axisLabel: 'Voltage (v)',
-      axisLabelDistance: 0
     },
     zoom: {
       enabled: true,
@@ -123,7 +125,7 @@ export class AppLineChartDemoComponent implements OnInit {
 
   ngOnInit() {
     this.data = this.getData();
-    console.log(' n data =', this.data);
+    // console.log(' n data =', this.data);
   }
 
   private getData(): any[] {
